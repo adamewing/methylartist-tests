@@ -1,2 +1,2 @@
-# methylartist_tests
+# methylartist-tests
 Test data and examples for methylartist
