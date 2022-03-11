@@ -1,0 +1,2 @@
+data/MCF7_ATCC.sample.haplotag.bam data/MCF7_ATCC.sample.megalodon.db
+data/MCF7_ECACC.sample.haplotag.bam data/MCF7_ECACC.sample.megalodon.db
