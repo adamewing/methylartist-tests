@@ -35,7 +35,7 @@ methylartist locus -d MCF7.example.data.txt -i chr19:56172382-56187168 --samplep
 
 ### Example using `locus` with methylation calls stored in a .bam file using `Ml` and `Mm` tags:
 ```
-methylartist locus -b data/MCF7_ATCC.modification_tags.bam,data/MCF7_ECACC.modification_tags.bam -i chr19:56172382-56187168 --samplepalette cubehelix -g data/Homo_sapiens.GRCh38.97.chr.sorted.gtf.gz --labelgenes
+methylartist locus -b data/MCF7_ATCC.modification_tags.bam,data/MCF7_ECACC.modification_tags.bam -i chr19:56172382-56187168 --samplepalette cubehelix -g data/Homo_sapiens.GRCh38.97.chr.sorted.gtf.gz --labelgenes --ref /home/data/ref/hg38/Homo_sapiens_assembly38.fasta --motif CG
 ```
 ![locus_bam](https://github.com/adamewing/methylartist-tests/blob/main/png/MCF7_ATCC.modification_tags.chr19_56172382_56187168.m.cohort.ms1.smw24.locus.meth.png?raw=true)
 
