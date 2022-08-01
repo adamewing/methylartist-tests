@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e # exit run_tests.sh if anything fails
+
 echo "distribution plot..."
 time methylartist scoredist -n 300000 -d data/MCF7_ATCC.sample.megalodon.db,data/MCF7_ECACC.sample.megalodon.db -m m
 
@@ -14,6 +16,9 @@ time methylartist segplot -s MCF7.example.segments.MCF7.example.data.segmeth.tsv
 
 echo "~15kbp locus from db..."
 time methylartist locus -d MCF7.example.data.txt -i chr19:56172382-56187168 --samplepalette crest -g data/Homo_sapiens.GRCh38.97.chr.sorted.gtf.gz --labelgenes
+
+echo "test --primary_only option"
+time methylartist locus -d MCF7.example.data.txt -i chr19:56172382-56187168 --samplepalette crest -g data/Homo_sapiens.GRCh38.97.chr.sorted.gtf.gz --labelgenes --primary_only
 
 echo "~15kbp locus from mod bam..."
 time methylartist locus -b data/MCF7_ATCC.modification_tags.bam,data/MCF7_ECACC.modification_tags.bam -i chr19:56172382-56187168 --samplepalette cubehelix -g data/Homo_sapiens.GRCh38.97.chr.sorted.gtf.gz --labelgenes --ref /home/data/ref/hg38/Homo_sapiens_assembly38.fasta --motif CG
