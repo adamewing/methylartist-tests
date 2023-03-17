@@ -47,7 +47,10 @@ echo -e "\n~15kbp locus from mod bam...\n"
 time methylartist locus -b data/MCF7_ATCC.modification_tags.bam,data/MCF7_ECACC.modification_tags.bam -i chr19:56172382-56187168 --samplepalette cubehelix -g data/Homo_sapiens.GRCh38.97.chr.sorted.gtf.gz --labelgenes --ref data/Homo_sapiens_assembly38.fasta.gz --motif CG
 
 echo -e "\n~15kbp locus from mod bam custom colour...\n"
-time methylartist locus -b data/MCF7_ATCC.modification_tags.bam:#32a852,data/MCF7_ECACC.modification_tags.bam:#9a32a8 -i chr19:56172382-56187168 --samplepalette cubehelix -g data/Homo_sapiens.GRCh38.97.chr.sorted.gtf.gz --labelgenes --ref data/Homo_sapiens_assembly38.fasta.gz --motif CG
+time methylartist locus -b data/MCF7_ATCC.modification_tags.bam:#32a852,data/MCF7_ECACC.modification_tags.bam:#9a32a8 -i chr19:56172382-56187168 -g data/Homo_sapiens.GRCh38.97.chr.sorted.gtf.gz --labelgenes --ref data/Homo_sapiens_assembly38.fasta.gz --motif CG
+
+echo -e "\n~15kbp locus from mod bam custom colour from file...\n"
+time methylartist locus -b test_colours.txt -i chr19:56172382-56187168 -g data/Homo_sapiens.GRCh38.97.chr.sorted.gtf.gz --labelgenes --ref data/Homo_sapiens_assembly38.fasta.gz --motif CG
 
 echo -e "\n~15kbp locus from mod bam, primary_only...\n"
 time methylartist locus -b data/MCF7_ATCC.modification_tags.bam,data/MCF7_ECACC.modification_tags.bam -i chr19:56172382-56187168 --samplepalette cubehelix -g data/Homo_sapiens.GRCh38.97.chr.sorted.gtf.gz --labelgenes --ref data/Homo_sapiens_assembly38.fasta.gz --motif CG --primary_only
@@ -60,6 +63,12 @@ time methylartist locus -d MCF7.example.data.txt -i chr19:56810076-56870725 -l 5
 
 echo -e "\n~2 Mbp region...\n"
 time methylartist region -d MCF7.example.data.txt -i chr19:55810082-57840726 -n CG -r data/Homo_sapiens_assembly38.fasta.gz -p 8 -g data/Homo_sapiens.GRCh38.97.chr.sorted.gtf.gz --genepalette viridis --samplepalette magma
+
+echo -e "\n~2 Mbp region from modbam custom colour...\n"
+time methylartist region -b data/MCF7_ATCC.modification_tags.bam:#32a852,data/MCF7_ECACC.modification_tags.bam:#9a32a8 -i chr19:55810082-57840726 -n CG -r data/Homo_sapiens_assembly38.fasta.gz -p 8 -g data/Homo_sapiens.GRCh38.97.chr.sorted.gtf.gz --genepalette viridis 
+
+echo -e "\n~2 Mbp region from modbam custom colour from file...\n"
+time methylartist region -b test_colours.txt -i chr19:55810082-57840726 -n CG -r data/Homo_sapiens_assembly38.fasta.gz -p 8 -g data/Homo_sapiens.GRCh38.97.chr.sorted.gtf.gz --genepalette viridis 
 
 echo -e "\n~2 Mbp region, limit smoothed y-axis...\n"
 time methylartist region -d MCF7.example.data.txt -i chr19:55810082-57840726 -n CG -r data/Homo_sapiens_assembly38.fasta.gz -p 8 -g data/Homo_sapiens.GRCh38.97.chr.sorted.gtf.gz --genepalette viridis --samplepalette magma --ymin 0.2 --ymax 0.8
