@@ -50,3 +50,20 @@ methylartist locus -d MCF7.example.data.txt -i chr19:56810076-56870725 -l 568353
 methylartist region -d MCF7.example.data.txt -i chr19:55810082-57840726 -n CG -r /home/data/ref/hg38/Homo_sapiens_assembly38.fasta -p 8 -g data/Homo_sapiens.GRCh38.97.chr.sorted.gtf.gz --genepalette viridis --samplepalette magma
 ```
 ![region](https://github.com/adamewing/methylartist-tests/blob/main/png/MCF7.example.data.chr19_55810082-57840726.m.s26.w2013.m3.region.meth.png?raw=true)
+
+### Loading and display of C/U substitution based data (e.g. BS-seq or EM-seq)
+
+Note `locus` may take a long time to plot reads, a fix is pending.
+
+```
+methylartist db-sub -b NA12878.EMSEQ.GAPDH.bam -d NA12878.EMSEQ.GAPDH.db
+
+cat sub_test.data.txt
+NA12878.EMSEQ.GAPDH.bam NA12878.EMSEQ.GAPDH.db
+
+methylartist locus -d sub_test.data.txt -i chr12:6,517,169-6,555,718 -g data/Homo_sapiens.GRCh38.97.chr.sorted.gtf.gz --labelgenes --panelratios 5,5,1,3,3
+```
+
+![sub](https://github.com/adamewing/methylartist-tests/blob/main/png/sub_test.data.chr12_6517169_6555718.m.ms1.smw34.locus.meth.png?raw=true)
+
+

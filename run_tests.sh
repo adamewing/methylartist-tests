@@ -77,3 +77,7 @@ time methylartist region -b test_colours.txt -i chr19:55810082-57840726 -n CG -r
 
 echo -e "\n~2 Mbp region, limit smoothed y-axis...\n"
 time methylartist region -d MCF7.example.data.txt -i chr19:55810082-57840726 -n CG -r data/Homo_sapiens_assembly38.fasta.gz -p 8 -g data/Homo_sapiens.GRCh38.97.chr.sorted.gtf.gz --genepalette viridis --samplepalette magma --ymin 0.2 --ymax 0.8
+
+echo -e "\nC/U substitution based methylation data...\n"
+methylartist db-sub -b NA12878.EMSEQ.GAPDH.bam -d NA12878.EMSEQ.GAPDH.db
+sub_test.data.chr12_6517169_6555718.m.ms1.smw34.locus.meth.png
