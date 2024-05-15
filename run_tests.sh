@@ -81,3 +81,6 @@ time methylartist region -d MCF7.example.data.txt -i chr19:55810082-57840726 -n 
 echo -e "\nC/U substitution based methylation data...\n"
 methylartist db-sub -b data/NA12878.EMSEQ.GAPDH.bam -d data/NA12878.EMSEQ.GAPDH.db
 methylartist locus -d sub_test.data.txt -i chr12:6,517,169-6,555,718 -g data/Homo_sapiens.GRCh38.97.chr.sorted.gtf.gz --labelgenes --panelratios 5,5,1,3,3
+
+echo -e "\nCRAM test...\n"
+time methylartist region -b data/MCF7_ATCC.modification_tags.cram -i chr19:55810082-57840726 -n CG -r data/Homo_sapiens_assembly38.fasta.gz -p 8 -g data/Homo_sapiens.GRCh38.97.chr.sorted.gtf.gz --genepalette viridis
