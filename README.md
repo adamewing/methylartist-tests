@@ -51,9 +51,16 @@ methylartist region -d MCF7.example.data.txt -i chr19:55810082-57840726 -n CG -r
 ```
 ![region](https://github.com/adamewing/methylartist-tests/blob/main/png/MCF7.example.data.chr19_55810082-57840726.m.s26.w2013.m3.region.meth.png?raw=true)
 
-### Loading and display of C/U substitution based data (e.g. BS-seq or EM-seq)
+### Visualising methylation from C/T substitution data via .bam file (BS-seq, EM-seq):
 
-Note `locus` may take a long time to plot reads, a fix is pending.
+![ctbam](https://github.com/adamewing/methylartist-tests/blob/main/png/NA12878.EMSEQ.GAPDH.chr12_6517169_6555718.m.ms1.smw34.mt0.8.ct0.8.locus.meth.png?raw=true)
+
+```
+methylartist locus -b data/NA12878.EMSEQ.GAPDH.bam --ctbam data/NA12878.EMSEQ.GAPDH.bam -i chr12:6,517,169-6,555,718 -g data/Homo_sapiens.GRCh38.97.chr.sorted.gtf.gz --labelgenes --panelratios 5,5,1,3,3 --ref data/Homo_sapiens_assembly38.fasta.gz --motif CG --skip_raw
+```
+
+### Loading and display of C/U substitution based data (e.g. BS-seq or EM-seq) (*depreciated*)
+
 
 ```
 methylartist db-sub -b NA12878.EMSEQ.GAPDH.bam -d NA12878.EMSEQ.GAPDH.db

@@ -84,4 +84,7 @@ echo -e "\nCRAM test...\n"
 time methylartist region -b data/MCF7_ATCC.modification_tags.cram -i chr19:55810082-57840726 -n CG -r data/Homo_sapiens_assembly38.fasta.gz -p 8 -g data/Homo_sapiens.GRCh38.97.chr.sorted.gtf.gz --genepalette viridis
 
 echo -e "\nnon-modkit bedMethyl test...\n"
-test methylartist segmeth -b data/MCF7_ATCC.modification_tags.chr19.m.methyl.bed.gz --bed -i MCF7.example.segments.bed -p 32 --ref data/Homo_sapiens_assembly38.fasta.gz --motif CG
+time methylartist segmeth -b data/MCF7_ATCC.modification_tags.chr19.m.methyl.bed.gz --bed -i MCF7.example.segments.bed -p 32 --ref data/Homo_sapiens_assembly38.fasta.gz --motif CG
+
+echo -e "\nC/T substitution .bam via --ctbam test\n"
+time methylartist locus -b data/NA12878.EMSEQ.GAPDH.bam --ctbam data/NA12878.EMSEQ.GAPDH.bam -i chr12:6,517,169-6,555,718 -g data/Homo_sapiens.GRCh38.97.chr.sorted.gtf.gz --labelgenes --panelratios 5,5,1,3,3 --ref data/Homo_sapiens_assembly38.fasta.gz --motif CG --skip_raw
