@@ -23,10 +23,10 @@ echo -e "\nsegmeth from modbam...\n"
 time methylartist segmeth -b data/MCF7_ATCC.modification_tags.bam -i MCF7.example.segments.bed -p 8 --ref data/Homo_sapiens_assembly38.fasta.gz --motif CG
 
 echo -e "\nsegplot...\n"
-time methylartist segplot -s MCF7.example.segments.MCF7.example.data.segmeth.tsv -c LOW,MED1,MED2,HIGH -v --palette magma 
-time methylartist segplot -s MCF7.example.segments.MCF7.example.data.segmeth.tsv -c LOW,MED1,MED2,HIGH -v --palette magma -a
-time methylartist segplot -s MCF7.example.segments.MCF7.example.data.segmeth.tsv -c LOW,MED1,MED2,HIGH -g --palette magma
-time methylartist segplot -s MCF7.example.segments.MCF7.example.data.segmeth.tsv -c LOW,MED1,MED2,HIGH -g --palette magma -a
+time methylartist segplot -s MCF7.example.segments.MCF7.example.data.mt0.8.ct0.8.segmeth.tsv -c LOW,MED1,MED2,HIGH -v --palette magma 
+time methylartist segplot -s MCF7.example.segments.MCF7.example.data.mt0.8.ct0.8.segmeth.tsvv -c LOW,MED1,MED2,HIGH -v --palette magma -a
+time methylartist segplot -s MCF7.example.segments.MCF7.example.data.mt0.8.ct0.8.segmeth.tsv -c LOW,MED1,MED2,HIGH -g --palette magma
+time methylartist segplot -s MCF7.example.segments.MCF7.example.data.mt0.8.ct0.8.segmeth.tsv -c LOW,MED1,MED2,HIGH -g --palette magma -a
 
 echo -e "\nwgmeth...\n"
 time methylartist wgmeth -b data/MCF7_ATCC.modification_tags.bam -f data/Homo_sapiens_assembly38.fasta.gz.fai -c chr19 --mod m --motif CG --ref data/Homo_sapiens_assembly38.fasta.gz -s 10000 -p 8 --dss
@@ -47,7 +47,7 @@ echo -e "\n~15kbp locus from mod bam...\n"
 time methylartist locus -b data/MCF7_ATCC.modification_tags.bam,data/MCF7_ECACC.modification_tags.bam -i chr19:56172382-56187168 --samplepalette cubehelix -g data/Homo_sapiens.GRCh38.97.chr.sorted.gtf.gz --labelgenes --ref data/Homo_sapiens_assembly38.fasta.gz --motif CG
 
 echo -e "\nas above, with --show_transcripts, --smoothed_csv, and --exonheight ...\n"
-methylartist with command: /home/taewing/miniconda3/bin/methylartist locus -b data/MCF7_ATCC.modification_tags.bam,data/MCF7_ECACC.modification_tags.bam -i chr19:56172382-56187168 --samplepalette cubehelix -g data/Homo_sapiens.GRCh38.97.chr.sorted.gtf.gz --labelgenes --ref data/Homo_sapiens_assembly38.fasta.gz --motif CG --show_transcripts --smoothed_csv test.csv --exonheight 0.6 --panelratios 2,5,1,3,3
+time methylartist locus -b data/MCF7_ATCC.modification_tags.bam,data/MCF7_ECACC.modification_tags.bam -i chr19:56172382-56187168 --samplepalette cubehelix -g data/Homo_sapiens.GRCh38.97.chr.sorted.gtf.gz --labelgenes --ref data/Homo_sapiens_assembly38.fasta.gz --motif CG --show_transcripts --smoothed_csv test.csv --exonheight 0.6 --panelratios 2,5,1,3,3
 
 echo -e "\n~15kbp locus from mod bam custom colour...\n"
 time methylartist locus -b data/MCF7_ATCC.modification_tags.bam:#32a852,data/MCF7_ECACC.modification_tags.bam:#9a32a8 -i chr19:56172382-56187168 -g data/Homo_sapiens.GRCh38.97.chr.sorted.gtf.gz --labelgenes --ref data/Homo_sapiens_assembly38.fasta.gz --motif CG
