@@ -35,31 +35,31 @@ echo -e "\nwgmeth phased..."
 time methylartist wgmeth -b data/MCF7_ATCC.sample.haplotag.bam -d data/MCF7_ATCC.sample.megalodon.db -f data/Homo_sapiens_assembly38.fasta.gz.fai -c chr19 --mod m -s 10000 -p 8 --dss --phased
 
 echo -e "\n~15kbp locus from db...\n"
-time methylartist locus -d MCF7.example.data.txt -i chr19:56172382-56187168 --samplepalette crest -g data/Homo_sapiens.GRCh38.97.chr.sorted.gtf.gz --labelgenes
+time methylartist locus -d MCF7.example.data.txt -i chr19:56172382-56187168 --samplepalette crest -g data/Homo_sapiens.GRCh38.97.chr.sorted.gtf.gz 
 
 echo -e "\n~15kbp locus from db, limit smoothed axis...\n"
-time methylartist locus -d MCF7.example.data.txt -i chr19:56172382-56187168 --samplepalette crest -g data/Homo_sapiens.GRCh38.97.chr.sorted.gtf.gz --labelgenes --ymin 0.2 --ymax 0.8
+time methylartist locus -d MCF7.example.data.txt -i chr19:56172382-56187168 --samplepalette crest -g data/Homo_sapiens.GRCh38.97.chr.sorted.gtf.gz  --ymin 0.2 --ymax 0.8
 
 echo -e "\ntest --primary_only option\n"
-time methylartist locus -d MCF7.example.data.txt -i chr19:56172382-56187168 --samplepalette crest -g data/Homo_sapiens.GRCh38.97.chr.sorted.gtf.gz --labelgenes --primary_only
+time methylartist locus -d MCF7.example.data.txt -i chr19:56172382-56187168 --samplepalette crest -g data/Homo_sapiens.GRCh38.97.chr.sorted.gtf.gz  --primary_only
 
 echo -e "\n~15kbp locus from mod bam...\n"
-time methylartist locus -b data/MCF7_ATCC.modification_tags.bam,data/MCF7_ECACC.modification_tags.bam -i chr19:56172382-56187168 --samplepalette cubehelix -g data/Homo_sapiens.GRCh38.97.chr.sorted.gtf.gz --labelgenes --ref data/Homo_sapiens_assembly38.fasta.gz --motif CG
+time methylartist locus -b data/MCF7_ATCC.modification_tags.bam,data/MCF7_ECACC.modification_tags.bam -i chr19:56172382-56187168 --samplepalette cubehelix -g data/Homo_sapiens.GRCh38.97.chr.sorted.gtf.gz  --ref data/Homo_sapiens_assembly38.fasta.gz --motif CG
 
 echo -e "\nas above, with --show_transcripts, --smoothed_csv, and --exonheight ...\n"
-time methylartist locus -b data/MCF7_ATCC.modification_tags.bam,data/MCF7_ECACC.modification_tags.bam -i chr19:56172382-56187168 --samplepalette cubehelix -g data/Homo_sapiens.GRCh38.97.chr.sorted.gtf.gz --labelgenes --ref data/Homo_sapiens_assembly38.fasta.gz --motif CG --show_transcripts --smoothed_csv test.csv --exonheight 0.6 --panelratios 2,5,1,3,3
+time methylartist locus -b data/MCF7_ATCC.modification_tags.bam,data/MCF7_ECACC.modification_tags.bam -i chr19:56172382-56187168 --samplepalette cubehelix -g data/Homo_sapiens.GRCh38.97.chr.sorted.gtf.gz  --ref data/Homo_sapiens_assembly38.fasta.gz --motif CG --show_transcripts --smoothed_csv test.csv --exonheight 0.6 --panelratios 2,5,1,3,3
 
 echo -e "\n~15kbp locus from mod bam custom colour...\n"
-time methylartist locus -b data/MCF7_ATCC.modification_tags.bam:#32a852,data/MCF7_ECACC.modification_tags.bam:#9a32a8 -i chr19:56172382-56187168 -g data/Homo_sapiens.GRCh38.97.chr.sorted.gtf.gz --labelgenes --ref data/Homo_sapiens_assembly38.fasta.gz --motif CG
+time methylartist locus -b data/MCF7_ATCC.modification_tags.bam:#32a852,data/MCF7_ECACC.modification_tags.bam:#9a32a8 -i chr19:56172382-56187168 -g data/Homo_sapiens.GRCh38.97.chr.sorted.gtf.gz  --ref data/Homo_sapiens_assembly38.fasta.gz --motif CG
 
 echo -e "\n~15kbp locus from mod bam custom colour from file...\n"
-time methylartist locus -b test_colours.txt -i chr19:56172382-56187168 -g data/Homo_sapiens.GRCh38.97.chr.sorted.gtf.gz --labelgenes --ref data/Homo_sapiens_assembly38.fasta.gz --motif CG
+time methylartist locus -b test_colours.txt -i chr19:56172382-56187168 -g data/Homo_sapiens.GRCh38.97.chr.sorted.gtf.gz  --ref data/Homo_sapiens_assembly38.fasta.gz --motif CG
 
 echo -e "\n~15kbp locus from mod bam, primary_only...\n"
-time methylartist locus -b data/MCF7_ATCC.modification_tags.bam,data/MCF7_ECACC.modification_tags.bam -i chr19:56172382-56187168 --samplepalette cubehelix -g data/Homo_sapiens.GRCh38.97.chr.sorted.gtf.gz --labelgenes --ref data/Homo_sapiens_assembly38.fasta.gz --motif CG --primary_only
+time methylartist locus -b data/MCF7_ATCC.modification_tags.bam,data/MCF7_ECACC.modification_tags.bam -i chr19:56172382-56187168 --samplepalette cubehelix -g data/Homo_sapiens.GRCh38.97.chr.sorted.gtf.gz  --ref data/Homo_sapiens_assembly38.fasta.gz --motif CG --primary_only
 
 echo -e "\nuse MM/ML instead of Mm/Ml...\n"
-methylartist locus -b data/MCF7_ATCC.modification_tags.caps_MM_ML.bam -i chr19:56172382-56187168 --samplepalette cubehelix -g data/Homo_sapiens.GRCh38.97.chr.sorted.gtf.gz --labelgenes --ref data/Homo_sapiens_assembly38.fasta.gz --motif CG
+methylartist locus -b data/MCF7_ATCC.modification_tags.caps_MM_ML.bam -i chr19:56172382-56187168 --samplepalette cubehelix -g data/Homo_sapiens.GRCh38.97.chr.sorted.gtf.gz  --ref data/Homo_sapiens_assembly38.fasta.gz --motif CG
 
 echo -e "\n~30 kbp phased locus...\n"
 time methylartist locus -d MCF7.example.data.txt -i chr19:56810076-56870725 -l 56835376-56840476 -g data/Homo_sapiens.GRCh38.97.chr.sorted.gtf.gz --genes PEG3 --samplepalette viridis --phased --maskcutoff 0
@@ -78,7 +78,7 @@ time methylartist region -d MCF7.example.data.txt -i chr19:55810082-57840726 -n 
 
 echo -e "\nC/U substitution based methylation data...\n"
 methylartist db-sub -b data/NA12878.EMSEQ.GAPDH.bam -d data/NA12878.EMSEQ.GAPDH.db
-methylartist locus -d sub_test.data.txt -i chr12:6,517,169-6,555,718 -g data/Homo_sapiens.GRCh38.97.chr.sorted.gtf.gz --labelgenes --panelratios 5,5,1,3,3
+methylartist locus -d sub_test.data.txt -i chr12:6,517,169-6,555,718 -g data/Homo_sapiens.GRCh38.97.chr.sorted.gtf.gz  --panelratios 5,5,1,3,3
 
 echo -e "\nCRAM test...\n"
 time methylartist region -b data/MCF7_ATCC.modification_tags.cram -i chr19:55810082-57840726 -n CG -r data/Homo_sapiens_assembly38.fasta.gz -p 8 -g data/Homo_sapiens.GRCh38.97.chr.sorted.gtf.gz --genepalette viridis
@@ -87,4 +87,4 @@ echo -e "\nnon-modkit bedMethyl test...\n"
 time methylartist segmeth -b data/MCF7_ATCC.modification_tags.chr19.m.methyl.bed.gz --bed -i MCF7.example.segments.bed -p 32 --ref data/Homo_sapiens_assembly38.fasta.gz --motif CG
 
 echo -e "\nC/T substitution .bam via --ctbam test\n"
-time methylartist locus -b data/NA12878.EMSEQ.GAPDH.bam --ctbam data/NA12878.EMSEQ.GAPDH.bam -i chr12:6,517,169-6,555,718 -g data/Homo_sapiens.GRCh38.97.chr.sorted.gtf.gz --labelgenes --panelratios 5,5,1,3,3 --ref data/Homo_sapiens_assembly38.fasta.gz --motif CG --skip_raw
+time methylartist locus -b data/NA12878.EMSEQ.GAPDH.bam --ctbam data/NA12878.EMSEQ.GAPDH.bam -i chr12:6,517,169-6,555,718 -g data/Homo_sapiens.GRCh38.97.chr.sorted.gtf.gz  --panelratios 5,5,1,3,3 --ref data/Homo_sapiens_assembly38.fasta.gz --motif CG 
