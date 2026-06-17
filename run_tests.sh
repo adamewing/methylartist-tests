@@ -24,7 +24,7 @@ time methylartist segmeth -b data/MCF7_ATCC.modification_tags.bam -i MCF7.exampl
 
 echo -e "\nsegplot...\n"
 time methylartist segplot -s MCF7.example.segments.MCF7.example.data.mt0.8.ct0.8.segmeth.tsv -c LOW,MED1,MED2,HIGH -v --palette magma 
-time methylartist segplot -s MCF7.example.segments.MCF7.example.data.mt0.8.ct0.8.segmeth.tsvv -c LOW,MED1,MED2,HIGH -v --palette magma -a
+time methylartist segplot -s MCF7.example.segments.MCF7.example.data.mt0.8.ct0.8.segmeth.tsv -c LOW,MED1,MED2,HIGH -v --palette magma -a
 time methylartist segplot -s MCF7.example.segments.MCF7.example.data.mt0.8.ct0.8.segmeth.tsv -c LOW,MED1,MED2,HIGH -g --palette magma
 time methylartist segplot -s MCF7.example.segments.MCF7.example.data.mt0.8.ct0.8.segmeth.tsv -c LOW,MED1,MED2,HIGH -g --palette magma -a
 
