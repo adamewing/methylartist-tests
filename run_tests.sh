@@ -76,15 +76,11 @@ time methylartist region -b test_colours.txt -i chr19:55810082-57840726 -n CG -r
 echo -e "\n~2 Mbp region, limit smoothed y-axis...\n"
 time methylartist region -d MCF7.example.data.txt -i chr19:55810082-57840726 -n CG -r data/Homo_sapiens_assembly38.fasta.gz -p 8 -g data/Homo_sapiens.GRCh38.97.chr.sorted.gtf.gz --genepalette viridis --samplepalette magma --ymin 0.2 --ymax 0.8
 
-echo -e "\nC/U substitution based methylation data...\n"
-methylartist db-sub -b data/NA12878.EMSEQ.GAPDH.bam -d data/NA12878.EMSEQ.GAPDH.db
-methylartist locus -d sub_test.data.txt -i chr12:6,517,169-6,555,718 -g data/Homo_sapiens.GRCh38.97.chr.sorted.gtf.gz  --panelratios 5,5,1,3,3
-
 echo -e "\nCRAM test...\n"
 time methylartist region -b data/MCF7_ATCC.modification_tags.cram -i chr19:55810082-57840726 -n CG -r data/Homo_sapiens_assembly38.fasta.gz -p 8 -g data/Homo_sapiens.GRCh38.97.chr.sorted.gtf.gz --genepalette viridis
 
 echo -e "\nnon-modkit bedMethyl test...\n"
-time methylartist segmeth -b data/ MCF7_ATCC.modification_tags.caps_MM_ML.chr19.mt0.8.ct0.8.m.methyl.bed.gz --bed -i MCF7.example.segments.bed -p 32 --ref data/Homo_sapiens_assembly38.fasta.gz --motif CG
+time methylartist segmeth -b data/MCF7_ATCC.modification_tags.caps_MM_ML.chr19.mt0.8.ct0.8.m.methyl.bed.gz --bed -i MCF7.example.segments.bed -p 32 --ref data/Homo_sapiens_assembly38.fasta.gz --motif CG
 
 echo -e "\nC/T substitution .bam via --ctbam test\n"
 time methylartist locus -b data/NA12878.EMSEQ.GAPDH.bam --ctbam data/NA12878.EMSEQ.GAPDH.bam -i chr12:6,517,169-6,555,718 -g data/Homo_sapiens.GRCh38.97.chr.sorted.gtf.gz  --panelratios 5,5,1,3,3 --ref data/Homo_sapiens_assembly38.fasta.gz --motif CG 
