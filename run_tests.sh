@@ -61,6 +61,19 @@ time methylartist locus -b data/MCF7_ATCC.modification_tags.bam,data/MCF7_ECACC.
 echo -e "\nuse MM/ML instead of Mm/Ml...\n"
 methylartist locus -b data/MCF7_ATCC.modification_tags.caps_MM_ML.bam -i chr19:56172382-56187168 --samplepalette cubehelix -g data/Homo_sapiens.GRCh38.97.chr.sorted.gtf.gz  --ref data/Homo_sapiens_assembly38.fasta.gz --motif CG
 
+echo -e "\nimplicit (C+m.) and ambiguous (C+m?) MM tags give the same methylation (see data/make_implicit_bams.py)...\n"
+time methylartist locus -b data/MCF7_ATCC.modification_tags.ambiguous.bam -i chr19:56172382-56187168 -g data/Homo_sapiens.GRCh38.97.chr.sorted.gtf.gz  --ref data/Homo_sapiens_assembly38.fasta.gz --motif CG --smoothed_csv ambiguous.csv
+time methylartist locus -b data/MCF7_ATCC.modification_tags.implicit.bam -i chr19:56172382-56187168 -g data/Homo_sapiens.GRCh38.97.chr.sorted.gtf.gz  --ref data/Homo_sapiens_assembly38.fasta.gz --motif CG --smoothed_csv implicit.csv
+python - <<'EOF'
+import sys
+import pandas as pd
+ambiguous = pd.read_csv('ambiguous.csv', index_col=0).iloc[:, 0].mean()
+implicit = pd.read_csv('implicit.csv', index_col=0).iloc[:, 0].mean()
+print('mean smoothed methylation: C+m? %.3f, C+m. %.3f' % (ambiguous, implicit))
+if abs(ambiguous - implicit) > 0.05:
+    sys.exit('FAIL: implicit canonical calls (C+m.) not counted')
+EOF
+
 echo -e "\n~30 kbp phased locus...\n"
 time methylartist locus -d MCF7.example.data.txt -i chr19:56810076-56870725 -l 56835376-56840476 -g data/Homo_sapiens.GRCh38.97.chr.sorted.gtf.gz --genes PEG3 --samplepalette viridis --phased --maskcutoff 0
 
